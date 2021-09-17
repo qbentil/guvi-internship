@@ -38,8 +38,8 @@ a:hover{
 }
 .form-box{
     background: #eee;
-    border-top-right-radius: 3%;
-    border-bottom-right-radius: 3%;
+    border-radius: 5px;
+
 }
 form h3{
     font-weight: bold;

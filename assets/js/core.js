@@ -2,7 +2,25 @@ $(function()
 {
   const signin_form = $("#signin-form");
   const signup_form = $("#signup-form");
+
+  // toggle forms
+  $("#hide-login").on("click", function(e)
+  {
+    e.preventDefault();
+    $(signin_form).hide();
+    $(signup_form).show();
+  })
+  $("#hide-signup").on("click", function(e)
+  {
+    e.preventDefault();
+    $(signup_form).hide();
+    $(signin_form).show();
+  })
+
+
+  
 })
+
 
 
 
