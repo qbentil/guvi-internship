@@ -1,10 +1,3 @@
-
-
-
-
-
-// Form Validation
-
 // Disable form submissions if there are invalid fields
 (function() {
   const signin_form = $("#signin-form");
@@ -57,13 +50,47 @@
           event.stopPropagation();
         }
         form.classList.add('was-validated');
+        event.preventDefault();
       }, false);
     });
   }, false);
+
+
+
+  // CONSTANTS
+  function form_handler(form, action) 
+  {
+      var response = '<div class="alert alert-warning alert-dismissable"> Processing.. </div>';
+      $(form).find(".ajax-message").html(response).show('slow');
+      var formData  = $(form).serialize();
+      var url		=	"../admin/controllers/php/handlers.php";
+      console.log(formData);
+      // $.ajax({
+      //     url: url,
+      //     method: 'POST',
+      //     data: formData +'&action='+action,        
+      // }).done(function(result){
+      //     // console.log(result);
+      //     var data = JSON.parse(result)
+      //     if(data.status == 1){
+      //         response = '<div class="gen alert alert-success">'+data.message+'</div>';
+      //         form[0].reset();
+      //     }else{
+      //         response = '<div class="err alert alert-danger">'+data.message+'</div>';
+      //     }
+      //     $(form).find(".ajax-message").html(response).show('slow');
+      // })
+  }
+
+
+  // alert("Hiiiiiiii")
+  // Adding Faculty
+  $("#signup-form").submit(function(e)
+  {
+    alert("hiiiii")
+      e.preventDefault();
+      let form = $(this), action = 'signup'
+      add_handler(form, action);
+  })
 })();
 
-$(function()
-{
-
-  
-})

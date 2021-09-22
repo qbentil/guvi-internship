@@ -24,6 +24,7 @@
             <div class="col-md-7 col-sm-6 form-box">
                 <form method="POST" id="signin-form" class="needs-validation p-3" novalidate>
                     <h3>LOGIN</h3>
+                    <div class="ajax-message"></div>
                     <div class="form-group">
                       <label for="uname">Username:</label>
                       <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
@@ -32,7 +33,7 @@
                     </div>
                     <div class="form-group">
                       <label for="pwd">Password:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" autocomplete="off" required>
                       <div class="valid-feedback">Looks Good!</div>
                       <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
@@ -51,21 +52,22 @@
                 </form>
                 <form method="POST" id="signup-form" class="needs-validation p-3 hidden" novalidate>
                     <h3>SIGN UP</h3>
+                    <div class="ajax-message"></div>
                     <div class="form-group">
                       <label for="uname">Username:</label>
-                      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                      <input type="text" class="form-control" id="username" placeholder="Enter username" name="uname" required>
                       <div class="valid-feedback">Looks Good</div>
                       <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
                       <label for="pwd">Password:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" autocomplete="off" required>
                       <div class="valid-feedback">Looks Good!</div>
                       <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
                     <div class="form-group">
                       <label for="pwd">Confirm Password:</label>
-                      <input type="password" class="form-control" id="cpwd" data-rule-equalTo="#pswd" placeholder="Confirm password" name="cpswd" required>
+                      <input type="password" class="form-control" id="confirm-password"  placeholder="Confirm password" autocomplete="off" name="confirm-password" required>
                       <div class="valid-feedback">Looks Good!</div>
                       <div class="invalid-feedback">Passwords do not match</div>
                     </div>
@@ -77,7 +79,6 @@
                       </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Sign Up</button>
-                    <!-- <button class="btn btn-outline-warning">Login</button> -->
                     Alreadty have an account? <a href="javascript:;" id="hide-signup">Login</a>
                 </form>
             </div>
