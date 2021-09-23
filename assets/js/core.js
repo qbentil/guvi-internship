@@ -10,7 +10,7 @@
     $(signin_form).hide();
     $(signup_form).show();
   })
-  $("#hide-signup").on("click", function(e)
+  $(".hide-signup").on("click", function(e)
   {
     e.preventDefault();
     $(signup_form).hide();
@@ -63,23 +63,28 @@
       var response = '<div class="alert alert-warning alert-dismissable"> Processing.. </div>';
       $(form).find(".ajax-message").html(response).show('slow');
       var formData  = $(form).serialize();
-      var url		=	"../admin/controllers/php/handlers.php";
-      console.log(formData);
-      // $.ajax({
-      //     url: url,
-      //     method: 'POST',
-      //     data: formData +'&action='+action,        
-      // }).done(function(result){
-      //     // console.log(result);
-      //     var data = JSON.parse(result)
-      //     if(data.status == 1){
-      //         response = '<div class="gen alert alert-success">'+data.message+'</div>';
-      //         form[0].reset();
-      //     }else{
-      //         response = '<div class="err alert alert-danger">'+data.message+'</div>';
-      //     }
-      //     $(form).find(".ajax-message").html(response).show('slow');
-      // })
+      var url		=	"./assets/php/processor.php";
+      $.ajax({
+          url: url,
+          method: 'POST',
+          data: formData +'&action='+action,        
+      }).done(function(result){
+          console.log(result);
+          var data = JSON.parse(result)
+          if(data.status == 1)
+          {
+              response = '<div class="gen alert alert-success">'+data.message+'</div>';
+              // form[0].reset();
+          }else{
+            if(action == 'signup')
+            {
+              response = '<div class="err alert alert-danger">'+data.message+'</div>';
+            }else{
+              location.href = 'dashboard.php';
+            }
+          }
+          $(form).find(".ajax-message").html(response).show('slow');
+      })
   }
 
 
@@ -99,6 +104,8 @@
     let form = $(this), action = 'signin'
     form_handler(form, action);
   })
+
+  
 
   
 })();

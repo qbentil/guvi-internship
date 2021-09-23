@@ -121,17 +121,17 @@ class Controller
 		return $result->fetch_assoc();
 	}
 
-	public function login($umail,$upass)   {
+	public function login($username,$password)   {
         try {
             $tb = $this->tb;
-            $stmt = "SELECT * FROM `{$tb}` WHERE username=?";
+            $stmt = "SELECT * FROM `$tb` WHERE username=?";
             $pre_stmt = $this->con->prepare($stmt);
-            $pre_stmt->bind_param("s",$umail);
+            $pre_stmt->bind_param("s",$username);
             $pre_stmt->execute() or die($this->con->error);
             $result = $pre_stmt->get_result();
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
-                if(sha1($upass) == $result['password']) {
+                if(sha1($password) == $result['password']) {
                     $_SESSION['user_id'] = $result['id'];
                     return true;
                 } else {
