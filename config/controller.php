@@ -133,6 +133,7 @@ class Controller
                 $result = $result->fetch_assoc();
                 if(sha1($password) == $result['password']) {
                     $_SESSION['user_id'] = $result['id'];
+					$_SESSION['loggedIn'] = session_id();
                     return true;
                 } else {
                     return false;
@@ -166,12 +167,13 @@ class Controller
 }
 
 // $pr = new Controller();
-// echo "<pre>";
+// // echo "<pre>";
 // $username = "qbentil";
-// $password = "admin123";
+// $password = "Admin123";
 
 
-// echo $pr->new($username, $password);
+// echo $pr->login($username, $password);
+// echo $_SESSION['user_id'];
 // echo $pr->changeImage(1, "myphoto.jpg");
 // echo $pr->updateBasicInfo(1, $name, $phone);
 // echo $pr->updateSocials(1, "https:www.facebook.com/", "https:www.telegram.com/", "https:www.twitter.com/");

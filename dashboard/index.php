@@ -1,29 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no, user-scalable=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUVI - Internship Project"Dashboard</title>
+<?php
+    require_once 'includes/head.php';
+?>
 
-    <!-- BOOTSTRAP CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <!-- FONT_AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="row my-3 border py-2">
-              <div class="col-sm-10"><h5 class="username">@qBentil</h1></div>
-            <div class="col-sm-2">
-                <a href="" class="logout nav-link"><i class="fa fa-sign-out"></i>Logout</a>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-4 col-md-4 py-3">
                 <div class="text-center my-3">
@@ -135,26 +113,6 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- CUSTOM JS -->
-    <script src="./assets/js/core.js"></script>
-</body>
-</html>
+<?php
+    require_once 'includes/scripts.php';
+?>

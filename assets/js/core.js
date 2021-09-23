@@ -71,20 +71,20 @@
       }).done(function(result){
           console.log(result);
           var data = JSON.parse(result)
-          if(data.status == 1)
+          if(data.status == 1 && action == 'signin')
           {
-              response = '<div class="gen alert alert-success">'+data.message+'</div>';
-              // form[0].reset();
+            location.href = './dashboard/';
           }else{
-            if(action == 'signup')
+            if(data.status == 1)
             {
-              response = '<div class="err alert alert-danger">'+data.message+'</div>';
+              response = '<div class="err alert alert-success">'+data.message+'</div>';
             }else{
-              location.href = 'dashboard.php';
+              response = '<div class="err alert alert-danger">'+data.message+'</div>';
             }
           }
           $(form).find(".ajax-message").html(response).show('slow');
       })
+      return false;
   }
 
 
