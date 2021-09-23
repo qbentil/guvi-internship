@@ -87,10 +87,9 @@
   // Adding Faculty
   $("#signup-form").submit(function(e)
   {
-    alert("hiiiii")
       e.preventDefault();
       let form = $(this), action = 'signup'
-      add_handler(form, action);
+      form_handler(form, action);
   })
 })();
 
