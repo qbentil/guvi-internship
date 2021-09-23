@@ -83,13 +83,23 @@
   }
 
 
-  // alert("Hiiiiiiii")
-  // Adding Faculty
+
+  // Creating New Account
   $("#signup-form").submit(function(e)
   {
       e.preventDefault();
       let form = $(this), action = 'signup'
       form_handler(form, action);
   })
+
+  // User Login
+  $("#signin-form").submit(function(e)
+  {
+    e.preventDefault();
+    let form = $(this), action = 'signin'
+    form_handler(form, action);
+  })
+
+  
 })();
 
