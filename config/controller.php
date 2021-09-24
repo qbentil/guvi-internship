@@ -132,7 +132,7 @@ class Controller
             if ($result->num_rows == 1) {
                 $result = $result->fetch_assoc();
                 if(sha1($password) == $result['password']) {
-                    $_SESSION['user_id'] = $result['id'];
+                    $_SESSION['userid'] = $result['id'];
 					$_SESSION['loggedIn'] = session_id();
                     return true;
                 } else {
@@ -146,7 +146,7 @@ class Controller
     }
 
     public function is_loggedin() {
-        if(isset($_SESSION['user_id'])) {
+        if(isset($_SESSION['userid'])) {
             return true;
         }
 		return false;
@@ -158,7 +158,7 @@ class Controller
     }
 
     public function logout() {
-        unset($_SESSION['user_id']);
+        unset($_SESSION['userid']);
         return true;
     }
 

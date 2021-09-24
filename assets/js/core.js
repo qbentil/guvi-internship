@@ -73,7 +73,10 @@
           var data = JSON.parse(result)
           if(data.status == 1 && action == 'signin')
           {
-            location.href = './dashboard/';
+            // location.href = './dashboard/';
+            // window.location.replace('./dashboard/')
+            location.replace("./dashboard")
+
           }else{
             if(data.status == 1)
             {
@@ -82,8 +85,9 @@
               response = '<div class="err alert alert-danger">'+data.message+'</div>';
             }
           }
-          $(form).find(".ajax-message").html(response).show('slow');
+          $(form).find(".ajax-message").html(response).delay(5000).hide('slow');
       })
+      
       return false;
   }
 
@@ -110,3 +114,16 @@
   
 })();
 
+
+
+// if(data.status == 1)
+// {
+//   if(action == 'signup')
+//   {
+//     response = '<div class="err alert alert-success">'+data.message+'</div>';
+//   }else{
+//     location.replace("./dashboard")
+//   }
+// }else{
+//   response = '<div class="err alert alert-danger">'+data.message+'</div>';
+// }

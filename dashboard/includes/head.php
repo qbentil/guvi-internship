@@ -35,7 +35,7 @@
 <body>
     <div class="container">
         <div class="row my-3 border py-2">
-              <div class="col-sm-10"><h5 class="username">@ <?php  echo $_SESSION['user_id'] ?></h1></div>
+              <div class="col-sm-10"><h5 class="username">@ <?php  echo $_SESSION['userid'] ?></h1></div>
             <div class="col-sm-2">
                 <a href="?logout=1" class="logout nav-link"><i class="fa fa-sign-out"></i>Logout</a>
             </div>

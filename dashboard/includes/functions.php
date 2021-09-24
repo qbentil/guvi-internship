@@ -11,9 +11,9 @@
     
         public function user()
         {
-            session_start();
+            // session_start();
             $controller = new Controller();
-            $id = $_SESSION[ 'user_id'];
+            $id = $_SESSION[ 'userid'];
             return $controller->singlerecord($id);
         }
 
