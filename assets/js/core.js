@@ -58,12 +58,12 @@
 
 
   // GENERAL FORM HANDLER
-  function form_handler(form, action) 
+  function form_handler(form, action, relative_path = "./") 
   {
       var response = '<div class="alert alert-warning alert-dismissable"> Processing.. </div>';
       $(form).find(".ajax-message").html(response).show('slow');
       var formData  = $(form).serialize();
-      var url		=	"./assets/php/processor.php";
+      var url		=	relative_path+"assets/php/processor.php";
       $.ajax({
           url: url,
           method: 'POST',
@@ -106,6 +106,12 @@
     form_handler(form, action);
   })
 
+  $("#update_profile").submit(function(e)
+  {
+    e.preventDefault();
+    let form = $(this), action = 'update_profile'
+    form_handler(form, action, "../");
+  })
   
 
   

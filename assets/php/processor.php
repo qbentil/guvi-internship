@@ -75,4 +75,71 @@
     
     }
 
+    // UPDATE PROFILE
+    if(isset($_POST['action']) && $_POST['action'] == 'update_profile')
+    {
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $location = $_POST['location'];
+
+        
+
+        if(empty($first_name) || empty($last_name) || empty($phone) || empty($email) || empty($location))
+        {
+            echo json_encode(['status'=> 0, 'message'=> "One or more field(s) is empty"]);
+            exit;
+        }
+
+
+        // Add to database after validation
+        require_once '../../config/controller.php';
+        $controller = new Controller();
+        $id = $_SESSION['userid'];
+        $response = $controller->updateBasicInfo($id, $first_name, $last_name, $phone, $email, $location);
+        if($response == "SUCCESS")
+        {
+            echo json_encode(['status'=> 1, 'message'=> "Profile info updated successfully"]);
+            exit;
+        }else{
+            echo json_encode(['status'=> 0, 'message'=> "Sorry something went wrong. Try again later!"]);
+            exit;
+        }
+    
+    }
+    // UPDATE PASSWORD
+    if(isset($_POST['action']) && $_POST['action'] == 'update_password')
+    {
+        $current = $_POST['current'];
+        $new = $_POST['new'];
+        $confirm = $_POST['confirm'];
+
+
+        
+
+        if(empty($first_name) || empty($last_name) || empty($phone) || empty($email) || empty($location))
+        {
+            echo json_encode(['status'=> 0, 'message'=> "One or more field(s) is empty"]);
+            exit;
+        }
+
+
+        // Add to database after validation
+        require_once '../../config/controller.php';
+        $controller = new Controller();
+        $id = $_SESSION['userid'];
+        $response = $controller->updateBasicInfo($id, $first_name, $last_name, $phone, $email, $location);
+        if($response == "SUCCESS")
+        {
+            echo json_encode(['status'=> 1, 'message'=> "Profile info updated successfully"]);
+            exit;
+        }else{
+            echo json_encode(['status'=> 0, 'message'=> "Sorry something went wrong. Try again later!"]);
+            exit;
+        }
+    
+    }
+
+
 ?>

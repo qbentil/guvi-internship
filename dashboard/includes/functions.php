@@ -2,11 +2,11 @@
 
     class Functions
     {
-
+        public $HOME_DIR;
         public function __construct()
         {
             require_once "../config/controller.php";
-            define("HOME_DIR", "/guvi/"); //Home Directory
+            $this->HOME_DIR = "/guvi/";
         }
     
         public function user()
@@ -24,7 +24,7 @@
                 ob_start();
                 session_unset();
                 session_destroy();
-                $controller->redirect(HOME_DIR);
+                $controller->redirect($this->HOME_DIR);
             }
         }
 
@@ -35,7 +35,7 @@
                 ob_start();
                 session_unset();
                 session_destroy();
-                $controller->redirect(HOME_DIR);
+                $controller->redirect($this->HOME_DIR);
             }
 
         }
