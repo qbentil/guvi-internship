@@ -19,7 +19,7 @@
                         <?php echo $snippets->profile_form(); ?>
                     </div>
                     <div class="tab-pane fade show " class = "needs-validation" id="security" role="tabpanel" aria-labelledby="nav-security-tab">
-
+                        <?php echo $snippets->security_form(); ?>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,4 @@
 <?php
-
     // SIGNUP
     if(isset($_POST['action']) && $_POST['action'] == 'signup')
     {
@@ -115,10 +114,14 @@
         $new = $_POST['new'];
         $confirm = $_POST['confirm'];
 
-
+        if($new !== $confirm)
+        {
+            echo json_encode(['status'=> 0, 'message'=> "Passwords do not match."]);
+            exit;
+        }
         
 
-        if(empty($first_name) || empty($last_name) || empty($phone) || empty($email) || empty($location))
+        if(empty($current) || empty($new) || empty($confirm))
         {
             echo json_encode(['status'=> 0, 'message'=> "One or more field(s) is empty"]);
             exit;
@@ -129,10 +132,13 @@
         require_once '../../config/controller.php';
         $controller = new Controller();
         $id = $_SESSION['userid'];
-        $response = $controller->updateBasicInfo($id, $first_name, $last_name, $phone, $email, $location);
+        $response = $controller->changePassword($id, $current, $new);
         if($response == "SUCCESS")
         {
-            echo json_encode(['status'=> 1, 'message'=> "Profile info updated successfully"]);
+            echo json_encode(['status'=> 1, 'message'=> "Password updated successfully"]);
+            exit;
+        }else if($response == "INCORRECT"){
+            echo json_encode(['status'=> 0, 'message'=> "Current password is not current"]);
             exit;
         }else{
             echo json_encode(['status'=> 0, 'message'=> "Sorry something went wrong. Try again later!"]);

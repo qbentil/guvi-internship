@@ -141,7 +141,7 @@ class Snippets
     public function security_form()
     {
         return "
-        <form class='needs-validation' method='post' novalidate >
+        <form class='needs-validation' id = 'change_password' method='post' novalidate >
             <div class='ajax-message'></div>
             <div class='form-group'>
                 <div class='col-xs-6'>

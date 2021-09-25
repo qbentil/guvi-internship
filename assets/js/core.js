@@ -69,7 +69,7 @@
           method: 'POST',
           data: formData +'&action='+action,        
       }).done(function(result){
-          console.log(result);
+          // console.log(result);
           var data = JSON.parse(result)
           if(data.status == 1 && action == 'signin')
           {
@@ -79,13 +79,13 @@
             if(data.status == 1)
             {
               response = '<div class="err alert alert-success">'+data.message+'</div>';
+
             }else{
               response = '<div class="err alert alert-danger">'+data.message+'</div>';
             }
           }
           $(form).find(".ajax-message").html(response).delay(5000).hide('slow');
       })
-      return false;
   }
 
 
@@ -110,6 +110,12 @@
   {
     e.preventDefault();
     let form = $(this), action = 'update_profile'
+    form_handler(form, action, "../");
+  })
+  $("#change_password").submit(function(e)
+  {
+    e.preventDefault();
+    let form = $(this), action = 'update_password'
     form_handler(form, action, "../");
   })
   
