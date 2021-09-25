@@ -57,7 +57,7 @@
 
 
 
-  // CONSTANTS
+  // GENERAL FORM HANDLER
   function form_handler(form, action) 
   {
       var response = '<div class="alert alert-warning alert-dismissable"> Processing.. </div>';
@@ -110,17 +110,3 @@
 
   
 })();
-
-
-
-// if(data.status == 1)
-// {
-//   if(action == 'signup')
-//   {
-//     response = '<div class="err alert alert-success">'+data.message+'</div>';
-//   }else{
-//     location.replace("./dashboard")
-//   }
-// }else{
-//   response = '<div class="err alert alert-danger">'+data.message+'</div>';
-// }

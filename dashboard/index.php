@@ -3,31 +3,7 @@
 ?>
 
         <div class="row">
-            <div class="col-sm-4 col-md-4 py-3">
-                <div class="text-center my-3">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar"><br>
-                    <i>Upload a different photo...</i>
-                    <div class="form-group">   
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                          <!-- <input type="file" class="custom-file-input" id="inputGroupFile02"> -->
-                          <label class="custom-file-label" for="img">Choose file</label>
-                          <input type="file" id="img" class="custom-file-input text-center center-block file-upload" />
-                        </div>
-                        <div class="input-group-append">
-                          <span class="input-group-text" id="">Upload</span>
-                        </div>
-                      </div>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-                    <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-                </ul>              
-            </div>
+
             <div class="col-sm-8 col-md-8">
                 <ul class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                     <li> <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a></li>
