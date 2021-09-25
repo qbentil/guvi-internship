@@ -73,9 +73,7 @@
           var data = JSON.parse(result)
           if(data.status == 1 && action == 'signin')
           {
-            // location.href = './dashboard/';
-            // window.location.replace('./dashboard/')
-            location.replace("./dashboard")
+            location.href = './dashboard/';
 
           }else{
             if(data.status == 1)
@@ -87,7 +85,6 @@
           }
           $(form).find(".ajax-message").html(response).delay(5000).hide('slow');
       })
-      
       return false;
   }
 

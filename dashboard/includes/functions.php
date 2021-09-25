@@ -20,7 +20,7 @@
         public function authenticate()
         {
             $controller = new Controller();
-            if ($controller->is_loggedin()) {
+            if (!$controller->is_loggedin()) {
                 ob_start();
                 session_unset();
                 session_destroy();
