@@ -62,20 +62,13 @@ class Snippets
                 <div class='form-group'>   
                 </div>
 
-                <form enctype='multipart/form-data' method='post'>
+                <form  id = 'update_photo' method='post' enctype='multipart/form-data'>
+                    <div class='ajax-message'></div>
                     <div class='input-group mb-3'>
                         <div class='custom-file'>
-                        <!-- <input type='file' class='custom-file-input' id='inputGroupFile02'> -->
-                        <label class='custom-file-label' for='img'>Choose file</label>
-                        <input type='file' id='img' class='custom-file-input text-center center-block file-upload' />
+                            <label class='custom-file-label' for='user_image'>Choose file</label>
+                            <input type='file' name='user_image' id='user_image' class='custom-file-input text-center center-block file-upload' />
                         </div>
-                        <div class='input-group-append'>
-                        <span class='input-group-text' id=''>Upload</span>
-                        </div>
-                    </div>
-                    <div class='form-group'>
-                        <button class='btn  btn-success' type='submit'><i class='fa fa-check'></i> Save</button>
-                        <button class='btn btn-outline-primary' type='reset'><i class='fa fa-repeat'></i> Reset</button>
                     </div>
                 </form>
             </div>

@@ -146,6 +146,139 @@
         }
     
     }
+    // UPDATE IMAGE
+    if(isset($_POST['action']) && $_POST['action'] == 'change_photo')
+    {
+        // $photo = $_FILES['user_image']['name'];
 
+        // if(empty($photo))
+        // {
+        //     echo json_encode(['status'=> 0, 'message'=> "One or more field(s) is empty"]);
+        //     exit;
+        // }
 
+        // $target_dir = "../../assets/images/users/";  //directory to store image
+        // $target_file = $target_dir . basename($_FILES['user_image']["name"]);
+        // $uploadOk = 1;
+        // $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        
+        // // Check if image file is a actual image or fake image
+        // $check = getimagesize($_FILES['user_image']["tmp_name"]);
+        // if($check !== true) {
+        //     echo json_encode( ["status" => 0, "message" => "Sorry photo is not an actual image."] );
+        //     $uploadOk = 0;
+        //     exit();
+    
+        // }
+        
+        // // Check file size
+        // if ($_FILES['user_image']["size"] > 500000) {
+        //   $msg = "Sorry, your file is too large.";
+        //   echo json_encode( ["status" => 0, "message" => $msg] );
+        //   $uploadOk = 0;
+        // }
+        
+        // // Allow certain file formats
+        // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        // && $imageFileType != "gif" ) {
+        //   $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed for photo.";
+        //   echo json_encode( ["status" => 0, "message" => $msg] );
+        //   $uploadOk = 0;
+        //   exit();
+        // }
+        
+        // // Check if $uploadOk is set to 0 by an error
+        // if ($uploadOk == 0) {
+        //   $msg = "Sorry, photo upload failed. Try again.";
+        //   echo json_encode( ["status" => 0, "message" => $msg] );
+        //   exit();
+    
+    
+        // // if everything is ok, try to upload file
+        // } else {
+        //   if (!move_uploaded_file($_FILES['user_image']["tmp_name"], $target_file)) {
+        //     $msg = "Sorry, there was an error uploading your file.";
+        //     echo json_encode( ["status" => 0, "message" => $msg] );
+        //     exit();
+        //   }else{
+              
+        //     // Add to database after validation
+        //     require_once '../../config/controller.php';
+        //     $controller = new Controller();
+        //     $id = $_SESSION['userid'];
+        //     $response = $controller->changeImage($id, $_FILES['user_image']['name']);
+        //     if($response == "SUCCESS")
+        //     {
+        //         echo json_encode(['status'=> 1, 'message'=> "Photo updated successfully"]);
+        //         exit;
+        //     }else{
+        //         echo json_encode(['status'=> 0, 'message'=> "Sorry something went wrong. Try again later!"]);
+        //         exit;
+        //     }
+        //   }
+        // }    
+        if($_FILES['user_image']['name'] != ''){
+            $test = explode('.', $_FILES['user_image']['name']);
+            $extension = end($test);    
+            $name = rand(100,999).'.'.$extension;
+            $target_dir = "../../assets/images/users/";  //directory to store image
+            $path = $target_dir.$name;
+            move_uploaded_file($_FILES['user_image']['tmp_name'], $path);
+            echo json_encode(['status'=> 1, 'message'=> "Image uploaded to $location"]);
+        }
+    }
+
+    function uplaod_photo($image)
+    {
+        $target_dir = "../../assets/images/users/";  //directory to store image
+        $target_file = $target_dir . basename($image["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($image["tmp_name"]);
+        if($check !== true) {
+            echo json_encode( ["status" => 0, "message" => "Sorry photo is not an actual image."] );
+            $uploadOk = 0;
+            exit();
+    
+        }
+        
+        
+        // Check file size
+        if ($image["size"] > 500000) {
+          $msg = "Sorry, your file is too large.";
+          echo json_encode( ["status" => 0, "message" => $msg] );
+          $uploadOk = 0;
+        }
+        
+        // Allow certain file formats
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif" ) {
+          $msg = "Sorry, only JPG, JPEG, PNG & GIF files are allowed for photo.";
+          echo json_encode( ["status" => 0, "message" => $msg] );
+          $uploadOk = 0;
+          exit();
+        }
+        
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+          $msg = "Sorry, photo upload failed. Try again.";
+          echo json_encode( ["status" => 0, "message" => $msg] );
+          exit();
+    
+    
+        // if everything is ok, try to upload file
+        } else {
+          if (!move_uploaded_file($image["tmp_name"], $target_file)) {
+            // echo "The file ". htmlspecialchars( basename( $image["name"])). " has been uploaded.";
+            $msg = "Sorry, there was an error uploading your file.";
+            echo json_encode( ["status" => 0, "message" => $msg] );
+            exit();
+          }
+          else{
+              return true;
+          }
+        }
+    }
 ?>

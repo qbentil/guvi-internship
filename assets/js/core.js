@@ -69,7 +69,7 @@
           method: 'POST',
           data: formData +'&action='+action,        
       }).done(function(result){
-          // console.log(result);
+          console.log(result);
           var data = JSON.parse(result)
           if(data.status == 1 && action == 'signin')
           {
@@ -86,6 +86,44 @@
           }
           $(form).find(".ajax-message").html(response).delay(5000).hide('slow');
       })
+  }
+  function image_form(form)
+  {
+      var response = '<div class="alert alert-warning alert-dismissable"> Processing.. </div>';
+      var hasError = false;
+      $(form).find(".ajax-message").html(response).show('slow');
+      var property = $("#user_image")[0];
+      var image_name = property.value;
+      var image_extension = image_name.split('.').pop().toLowerCase();
+      console.log(image_extension);
+      if(jQuery.inArray(image_extension,['gif','jpg','jpeg','png']) == -1){
+        response = '<div class="alert alert-danger alert-dismissable"> Invalid image file type. </div>'
+        $(form).find(".ajax-message").html(response).delay(5000).hide('slow');
+        hasError = true;
+      }
+      if(!hasError)
+      {
+        // var formData = new FormData();
+        var url		=	"../assets/php/processor.php";
+        // formData.append("file",property);
+        var formData  = $(form).serialize();
+        $.ajax({
+          url:url,
+          method:'POST',
+          data:formData+'&action=change_photo',
+          contentType:false,
+          cache:false,
+          processData:false,
+          beforeSend:function(){
+            response = '<div class="alert alert-warning alert-dismissable"> Loading...... </div>';
+            $(form).find(".ajax-message").html(response).show('slow');
+          },
+          success:function(data){
+            console.log(data);
+            // $('#msg').html(data);
+          }
+        });
+      }
   }
 
 
@@ -117,6 +155,13 @@
     e.preventDefault();
     let form = $(this), action = 'update_password'
     form_handler(form, action, "../");
+  })
+  
+  $("#user_image").change(function(e)
+  {
+    e.preventDefault();
+    let form = $("#update_photo")
+    image_form(form)
   })
   
 
