@@ -69,7 +69,7 @@
           method: 'POST',
           data: formData +'&action='+action,        
       }).done(function(result){
-          console.log(result);
+          // console.log(result);
           var data = JSON.parse(result)
           if(data.status == 1 && action == 'signin')
           {
@@ -79,7 +79,7 @@
             if(data.status == 1)
             {
               response = '<div class="err alert alert-success">'+data.message+'</div>';
-              $(form).reset();
+              form[0].reset();
 
             }else{
               response = '<div class="err alert alert-danger">'+data.message+'</div>';
