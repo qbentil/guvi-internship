@@ -109,17 +109,12 @@
       if(!hasError)
       {
         var formData = new FormData();
-        var url		=	"../assets/php/processor.php";
+        var url		=	"../assets/php/photoprocessor.php";
         formData.append("user_image",property);
-        // for(let pair of formData.entries()) {
-        //   console.log(pair[0]+': '+pair[1]);
-        // }
-        // // console.log(formData);
-        // return 0;
         $.ajax({
           url:url,
           method:'POST',
-          data:formData+'&action=change_photo',
+          data:formData,
           contentType:false,
           cache:false,
           processData:false,
@@ -128,7 +123,17 @@
             $(form).find(".ajax-message").html(response).show('slow');
           }
         }).done(function(result) {
-            console.log(result);
+          var data = JSON.parse(result)
+          if(data.status == 1)
+          {
+            response = '<div class="err alert alert-success">'+data.message+'</div>';
+
+          }else{
+
+              response = '<div class="err alert alert-danger">'+data.message+'</div>';
+          }
+          
+          $(form).find(".ajax-message").html(response).delay(5000).hide('slow');
         });
       }
   }
