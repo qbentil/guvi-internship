@@ -19,6 +19,17 @@
     $(signin_form).show();
   })
 
+  // Implemnting SHow Password
+  $("#show-password").change(function()
+  {
+    if($("#upass").attr("type") == 'password')
+    {
+      $("#upass").attr("type", "text")
+    }else{
+      $("#upass").attr("type", "password")
+    }
+  })
+
 
 
   // upload
