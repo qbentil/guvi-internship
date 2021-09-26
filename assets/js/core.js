@@ -79,6 +79,7 @@
             if(data.status == 1)
             {
               response = '<div class="err alert alert-success">'+data.message+'</div>';
+              $(form).reset();
 
             }else{
               response = '<div class="err alert alert-danger">'+data.message+'</div>';
@@ -109,7 +110,7 @@
         var formData  = $(form).serialize();
         $.ajax({
           url:url,
-          method:'POST',
+          type:'POST',
           data:formData+'&action=change_photo',
           contentType:false,
           cache:false,
