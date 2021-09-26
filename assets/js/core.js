@@ -96,11 +96,8 @@
       var hasError = false;
       $(form).find(".ajax-message").html(response).show('slow');
       var property = $("#user_image").get(0).files[0];
-      console.log(property);
       var image_name = property.name;
-      console.log(image_name);
       var image_extension = image_name.split('.').pop().toLowerCase();
-      console.log(image_extension);
       if(jQuery.inArray(image_extension,['gif','jpg','jpeg','png']) == -1){
         response = '<div class="alert alert-danger alert-dismissable"> Invalid image file type. </div>'
         $(form).find(".ajax-message").html(response).delay(5000).hide('slow');
@@ -137,8 +134,6 @@
         });
       }
   }
-
-
 
   // Creating New Account
   $("#signup-form").submit(function(e)
