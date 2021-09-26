@@ -217,6 +217,7 @@
         //     }
         //   }
         // }    
+        echo json_encode(['status'=> 0, 'message'=> "Image Not Found"]);
         if($_FILES['user_image']['name'] != ''){
             $test = explode('.', $_FILES['user_image']['name']);
             $extension = end($test);    
@@ -225,6 +226,8 @@
             $path = $target_dir.$name;
             move_uploaded_file($_FILES['user_image']['tmp_name'], $path);
             echo json_encode(['status'=> 1, 'message'=> "Image uploaded to $location"]);
+        }else{
+            echo json_encode(['status'=> 0, 'message'=> "Image Not Found"]);
         }
     }
 

@@ -1,3 +1,5 @@
+// const { get } = require("core-js/core/dict");
+
 // Disable form submissions if there are invalid fields
 (function() {
   const signin_form = $("#signin-form");
@@ -93,8 +95,10 @@
       var response = '<div class="alert alert-warning alert-dismissable"> Processing.. </div>';
       var hasError = false;
       $(form).find(".ajax-message").html(response).show('slow');
-      var property = $("#user_image")[0];
-      var image_name = property.value;
+      var property = $("#user_image").get(0).files[0];
+      console.log(property);
+      var image_name = property.name;
+      console.log(image_name);
       var image_extension = image_name.split('.').pop().toLowerCase();
       console.log(image_extension);
       if(jQuery.inArray(image_extension,['gif','jpg','jpeg','png']) == -1){
@@ -104,13 +108,17 @@
       }
       if(!hasError)
       {
-        // var formData = new FormData();
+        var formData = new FormData();
         var url		=	"../assets/php/processor.php";
-        // formData.append("file",property);
-        var formData  = $(form).serialize();
+        formData.append("user_image",property);
+        // for(let pair of formData.entries()) {
+        //   console.log(pair[0]+': '+pair[1]);
+        // }
+        // // console.log(formData);
+        // return 0;
         $.ajax({
           url:url,
-          type:'POST',
+          method:'POST',
           data:formData+'&action=change_photo',
           contentType:false,
           cache:false,
@@ -118,11 +126,9 @@
           beforeSend:function(){
             response = '<div class="alert alert-warning alert-dismissable"> Loading...... </div>';
             $(form).find(".ajax-message").html(response).show('slow');
-          },
-          success:function(data){
-            console.log(data);
-            // $('#msg').html(data);
           }
+        }).done(function(result) {
+            console.log(result);
         });
       }
   }
