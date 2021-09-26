@@ -12,6 +12,6 @@ I recomment you use XAMMP. (You can use any other)
 You are all set, you can now run the app in your browser on localhost.
 
 ## USER LOGINS:
-username: admin
-password: admin
+**username: admin**
+**password: admin**
 
