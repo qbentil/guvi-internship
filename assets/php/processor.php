@@ -138,7 +138,7 @@
             echo json_encode(['status'=> 1, 'message'=> "Password updated successfully"]);
             exit;
         }else if($response == "INCORRECT"){
-            echo json_encode(['status'=> 0, 'message'=> "Current password is not current"]);
+            echo json_encode(['status'=> 0, 'message'=> "Current password is not correct"]);
             exit;
         }else{
             echo json_encode(['status'=> 0, 'message'=> "Sorry something went wrong. Try again later!"]);
